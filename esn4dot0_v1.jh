@@ -1,0 +1,151 @@
+
+enum EntrepriseType {
+    SERVICE_PROVIDER (ServiceProvider), 
+    CLIENT (Client)
+}
+
+entity Entreprise {
+	name String,
+    logo ImageBlob,
+    type EntrepriseType,
+    presentation TextBlob,
+    phone String,
+    website String
+}
+
+enum Civility {
+    MR (Mr), 
+    MRS (Mrs)
+}
+
+entity Manager {
+	civility Civility,
+	fullName String,
+    phone String
+}
+
+enum ConsultantState {
+    IN_BETWEEN_CONTRACTS (InBetweenContracts), 
+    ON_ASSIGNMENT (OnAssignment), 
+    NOT_APPLICABLE (NotApplicable)
+}
+
+entity Consultant {
+	civility Civility,
+	fullName String,
+    phone String,
+    state ConsultantState
+}
+
+@embedded
+entity Experience {
+	jobTitle String,
+    entreprise String,
+    location String,
+    startDate LocalDate,
+    endDate LocalDate,
+    jobContext TextBlob,
+    keyAchievement TextBlob,
+    keyResponsibility TextBlob,
+}
+
+@embedded
+entity Education {
+	degree String,
+    fieldOfStudy String,
+    school String,
+    location String,
+    startDate LocalDate,
+    endDate LocalDate,
+    description TextBlob,
+    website String
+}
+
+@embedded
+entity Certification {
+	name String,
+    description TextBlob,
+    issueDate  LocalDate,
+    endDate LocalDate,
+    issuingOrganization String,
+    credentialID String,
+    credentialURL String   
+}
+
+enum SkillType {
+	SOFT_SKILL (SoftSkill),
+   	HARD_SKILL (HardSkill)
+}
+
+@embedded
+entity Skill {
+	name String,
+    type SkillType,
+    proficiency String
+}
+
+entity SkillProficiency {
+	name String,
+    description TextBlob
+}
+
+@embedded
+entity MissionPreference {
+}
+
+enum PreferenceRank {
+	PREF_1ST (FirstPreference), 
+    PREF_2ND (SecondPreference), 
+    PREF_3RD (ThirdPreference)
+}
+
+@embedded
+entity JobPreference {
+	jobTitle String,
+    preferenceRank PreferenceRank
+}
+
+@embedded
+entity EntreprisePreference {
+    entreprise String,
+    preferenceRank PreferenceRank
+}
+
+@embedded
+entity LocationPreference {
+    location String,
+    preferenceRank PreferenceRank
+}
+
+@embedded
+entity SkillPreference {
+    skill String,
+    preferenceRank PreferenceRank
+}
+
+
+relationship OneToOne {
+	Consultant{user(login)} to User,
+    Consultant to MissionPreference,
+    
+    Manager{user(login)} to User,
+}
+
+relationship ManyToOne {
+	Experience{consultant(fullName)} to Consultant{experience(jobTitle)},
+    Education{consultant(fullName)} to Consultant{education(degree)},
+    Certification{consultant(fullName)} to Consultant{certifications(name)},
+    Skill{consultant(fullName)} to Consultant{skills(name)},
+    
+    Manager{entreprise(name)} to Entreprise{manager(fullName)},
+    
+    Consultant{entreprise(name)} to Entreprise{consultant(fullName)},
+    Consultant{manager(fullName)} to Manager{managedConsultant(fullName)},
+}
+
+relationship OneToMany {
+	MissionPreference{jobs(jobTitle)} to JobPreference,
+    MissionPreference{entreprises(entreprise)} to EntreprisePreference,
+    MissionPreference{locations(location)} to LocationPreference,
+    MissionPreference{Skills(skill)} to SkillPreference,
+}
