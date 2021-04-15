@@ -1,0 +1,91 @@
+{
+  "name": "Consultant",
+  "fields": [
+    {
+      "fieldName": "civility",
+      "fieldType": "Civility",
+      "fieldValues": "MR (Mr),MRS (Mrs)"
+    },
+    {
+      "fieldName": "fullName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "state",
+      "fieldType": "ConsultantState",
+      "fieldValues": "IN_BETWEEN_CONTRACTS (InBetweenContracts),ON_ASSIGNMENT (OnAssignment),NOT_APPLICABLE (NotApplicable)"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "consultant",
+      "relationshipName": "user",
+      "otherEntityField": "login",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "entreprise",
+      "otherEntityRelationshipName": "consultant",
+      "relationshipName": "entreprise",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "manager",
+      "otherEntityRelationshipName": "managedConsultant",
+      "relationshipName": "manager",
+      "otherEntityField": "fullName"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "experience",
+      "otherEntityRelationshipName": "consultant",
+      "relationshipName": "experience",
+      "otherEntityField": "jobTitle"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "education",
+      "otherEntityRelationshipName": "consultant",
+      "relationshipName": "education",
+      "otherEntityField": "degree"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "certification",
+      "otherEntityRelationshipName": "consultant",
+      "relationshipName": "certifications",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "skill",
+      "otherEntityRelationshipName": "consultant",
+      "relationshipName": "skills",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "consultantPreference",
+      "otherEntityRelationshipName": "consultant",
+      "relationshipName": "preference"
+    }
+  ],
+  "entityTableName": "consultant",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210415011320"
+}

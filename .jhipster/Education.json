@@ -1,0 +1,57 @@
+{
+  "name": "Education",
+  "fields": [
+    {
+      "fieldName": "degree",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fieldOfStudy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "school",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "location",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "website",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "consultant",
+      "otherEntityRelationshipName": "education",
+      "relationshipName": "consultant",
+      "otherEntityField": "fullName"
+    }
+  ],
+  "entityTableName": "education",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": true,
+  "applications": "*",
+  "changelogDate": "20210415011322"
+}

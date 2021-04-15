@@ -1,0 +1,53 @@
+{
+  "name": "Certification",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "issueDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "issuingOrganization",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "credentialID",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "credentialURL",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "consultant",
+      "otherEntityRelationshipName": "certifications",
+      "relationshipName": "consultant",
+      "otherEntityField": "fullName"
+    }
+  ],
+  "entityTableName": "certification",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": true,
+  "applications": "*",
+  "changelogDate": "20210415011323"
+}

@@ -42,7 +42,20 @@
     "jwtSecretKey": "NjU1OTlmMWRhNzJjZTEzYjI2OWMyNmJmNTM1OWZkNjMxM2EwZTdhZjc1MWNkZmQyOTA2M2U4MGY2YmYzOTJiNjZhZjhlNjYwZDA4NGQwNGY3MTZmYzc5OGIxODJlNzVhMmI1YTNjNTY1NmVmMmUzOTljYWRjOTBiNjNiNjg2OGQ=",
     "clientTheme": "none",
     "clientThemeVariant": "",
-    "reactive": false
+    "reactive": false,
+    "entities": [
+      "Entreprise",
+      "Manager",
+      "Consultant",
+      "Experience",
+      "Education",
+      "Certification",
+      "Skill",
+      "SkillProficiency",
+      "ConsultantPreference",
+      "Preference"
+    ],
+    "lastLiquibaseTimestamp": 1618449207000
   },
   "git-provider": "GitHub",
   "git-company": "appsmedatailia",

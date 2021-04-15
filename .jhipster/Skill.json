@@ -1,0 +1,37 @@
+{
+  "name": "Skill",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "SkillType",
+      "fieldValues": "SOFT_SKILL (SoftSkill),HARD_SKILL (HardSkill)"
+    },
+    {
+      "fieldName": "proficiency",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "consultant",
+      "otherEntityRelationshipName": "skills",
+      "relationshipName": "consultant",
+      "otherEntityField": "fullName"
+    }
+  ],
+  "entityTableName": "skill",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": true,
+  "applications": "*",
+  "changelogDate": "20210415011324"
+}
