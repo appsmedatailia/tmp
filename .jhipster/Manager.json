@@ -1,0 +1,52 @@
+{
+  "name": "Manager",
+  "fields": [
+    {
+      "fieldName": "civility",
+      "fieldType": "Civility",
+      "fieldValues": "MR (Mr),MRS (Mrs)"
+    },
+    {
+      "fieldName": "fullName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "manager",
+      "relationshipName": "user",
+      "otherEntityField": "login",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "entreprise",
+      "otherEntityRelationshipName": "manager",
+      "relationshipName": "entreprise",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "consultant",
+      "otherEntityRelationshipName": "manager",
+      "relationshipName": "managedConsultant",
+      "otherEntityField": "fullName"
+    }
+  ],
+  "entityTableName": "manager",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210415011319"
+}

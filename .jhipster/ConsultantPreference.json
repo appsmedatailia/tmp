@@ -1,0 +1,46 @@
+{
+  "name": "ConsultantPreference",
+  "fields": [
+    {
+      "fieldName": "motivation",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "criterion",
+      "fieldType": "PreferenceCriterion",
+      "fieldValues": "BY_INDUSTRY_SECTOR (ByIndustrySector),BY_DOMAIN (ByDomain),BY_TECHNO (By_Techno),BY_ENTREPRISE (ByEntreprise)"
+    },
+    {
+      "fieldName": "priority",
+      "fieldType": "Priority",
+      "fieldValues": "HIGH (High),MEDIUM (Medium),LOW (Low)"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "consultant",
+      "otherEntityRelationshipName": "preference",
+      "relationshipName": "consultant",
+      "otherEntityField": "fullName"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "preference",
+      "otherEntityRelationshipName": "consultantPreference",
+      "relationshipName": "preferenceList",
+      "otherEntityField": "preference"
+    }
+  ],
+  "entityTableName": "consultant_preference",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210415011326"
+}

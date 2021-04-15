@@ -1,0 +1,32 @@
+{
+  "name": "Preference",
+  "fields": [
+    {
+      "fieldName": "prefernce",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "rank",
+      "fieldType": "PreferenceRank",
+      "fieldValues": "FIRST_CHOICE (FirstChoice),SECOND_CHOICE (SecondChoice),THIRD_CHOICE (ThirdChoice)"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "consultantPreference",
+      "otherEntityRelationshipName": "preferenceList",
+      "relationshipName": "consultantPreference"
+    }
+  ],
+  "entityTableName": "preference",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": true,
+  "applications": "*",
+  "changelogDate": "20210415011327"
+}

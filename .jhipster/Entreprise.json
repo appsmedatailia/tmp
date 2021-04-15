@@ -1,0 +1,58 @@
+{
+  "name": "Entreprise",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "logo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "EntrepriseType",
+      "fieldValues": "SERVICE_PROVIDER (ServiceProvider),CLIENT (Client)"
+    },
+    {
+      "fieldName": "presentation",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "website",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "manager",
+      "otherEntityRelationshipName": "entreprise",
+      "relationshipName": "manager",
+      "otherEntityField": "fullName"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "consultant",
+      "otherEntityRelationshipName": "entreprise",
+      "relationshipName": "consultant",
+      "otherEntityField": "fullName"
+    }
+  ],
+  "entityTableName": "entreprise",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210415011318"
+}
