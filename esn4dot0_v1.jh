@@ -89,45 +89,36 @@ entity SkillProficiency {
     description TextBlob
 }
 
-@embedded
-entity MissionPreference {
+entity ConsultantPreference {
+	motivation TextBlob,
+    criterion PreferenceCriterion,
+    priority Priority
+}
+enum PreferenceCriterion{
+BY_INDUSTRY_SECTOR (ByIndustrySector),
+BY_DOMAIN(ByDomain),
+BY_TECHNO(By_Techno),
+BY_ENTREPRISE(ByEntreprise)
+}
+enum Priority {
+	HIGH (High), 
+    MEDIUM (Medium), 
+    LOW (Low)
 }
 
+@embedded
+entity Preference {
+	prefernce String,
+    rank PreferenceRank
+}
 enum PreferenceRank {
-	PREF_1ST (FirstPreference), 
-    PREF_2ND (SecondPreference), 
-    PREF_3RD (ThirdPreference)
+	FIRST_CHOICE (FirstChoice), 
+    SECOND_CHOICE (SecondChoice), 
+    THIRD_CHOICE (ThirdChoice)
 }
-
-@embedded
-entity JobPreference {
-	jobTitle String,
-    preferenceRank PreferenceRank
-}
-
-@embedded
-entity EntreprisePreference {
-    entreprise String,
-    preferenceRank PreferenceRank
-}
-
-@embedded
-entity LocationPreference {
-    location String,
-    preferenceRank PreferenceRank
-}
-
-@embedded
-entity SkillPreference {
-    skill String,
-    preferenceRank PreferenceRank
-}
-
 
 relationship OneToOne {
-	Consultant{user(login)} to User,
-    Consultant to MissionPreference,
-    
+	Consultant{user(login)} to User,    	
     Manager{user(login)} to User,
 }
 
@@ -141,11 +132,7 @@ relationship ManyToOne {
     
     Consultant{entreprise(name)} to Entreprise{consultant(fullName)},
     Consultant{manager(fullName)} to Manager{managedConsultant(fullName)},
-}
-
-relationship OneToMany {
-	MissionPreference{jobs(jobTitle)} to JobPreference,
-    MissionPreference{entreprises(entreprise)} to EntreprisePreference,
-    MissionPreference{locations(location)} to LocationPreference,
-    MissionPreference{Skills(skill)} to SkillPreference,
+    
+    ConsultantPreference{consultant(fullName)} to Consultant{preference},
+    Preference to ConsultantPreference{preferenceList(preference)},
 }
